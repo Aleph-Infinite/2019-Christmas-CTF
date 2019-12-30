@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    deadfile:
+        build: .
+        cap_add:
+            - SYS_PTRACE
+        security_opt:
+          - seccomp:unconfined
+          - apparmor:unconfined
+        privileged: true
+        ports:
+            - "33445:3000"

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>로그인</title>
+</head>
+
+<body>
+  <input id="input_username" type="text" placeholder="사용자 이름">
+  <input id="input_password" type="password" placeholder="비밀번호">
+  <button onclick="login()">로그인</button>
+  <br>
+  <a href="/csrf/join.html">가입</a>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  async function login() {
+    const username = document.getElementById('input_username').value;
+    const password = document.getElementById('input_password').value;
+
+    if (!username || !password) return alert('아이디 또는 비밀번호가 입력되지 않았습니다');
+
+    const data = await axios.post('/csrf/login', {
+      username,
+      password,
+    });
+
+    const { code } = data.data;
+    switch (code) {
+      case 200:
+        window.location = '/csrf/';
+        break;
+      case 401:
+        window.location = '/csrf/logout';
+        break;
+      case 400:
+        alert('아이디 또는 비밀번호가 전달되지 않았습니다');
+        break;
+      case 404:
+        alert('아이디와 비밀번호를 확인해주세요');
+        break;
+      case 500:
+        alert('서버 오류 발생');
+    }
+  }
+</script>
+
+</html>

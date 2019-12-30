@@ -1,0 +1,13 @@
+service angry_solo 
+{
+    disable     = no
+    type        = UNLISTED
+    wait        = no
+    server      = /usr/bin/python3
+    server_args = /home/angry_solo/main.py
+    socket_type = stream
+    protocol    = tcp
+    user        = angry_solo
+    port        = 20000
+    flags       = REUSE
+}

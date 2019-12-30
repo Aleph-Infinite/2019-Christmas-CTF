@@ -1,0 +1,12 @@
+service babyseccomp
+{
+	    disable = no
+		type = UNLISTED
+		wait = no
+		server = /home/babyseccomp/start.sh
+		socket_type = stream
+		protocol = tcp
+		user = babyseccomp
+		port = 3000
+		flags = REUSE
+}

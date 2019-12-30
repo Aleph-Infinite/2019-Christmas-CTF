@@ -1,0 +1,8 @@
+ctf:
+    build: ./
+    volumes:
+        - ./share:/home/ctf
+    ports:
+        - "19382:4443"
+    expose:
+        - "4443"

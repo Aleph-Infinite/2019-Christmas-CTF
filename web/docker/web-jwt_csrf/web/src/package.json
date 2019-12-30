@@ -1,0 +1,28 @@
+{
+  "name": "x-mas-prob-web-jwt",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index",
+    "flag": "node ./src/indexFlag"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^2.0.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
+    "require-promise": "^1.0.1",
+    "sequelize": "^5.21.3",
+    "socket.io": "^2.3.0"
+  }
+}

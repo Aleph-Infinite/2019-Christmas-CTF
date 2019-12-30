@@ -1,0 +1,12 @@
+service santa_game
+{
+	    disable = no
+		type = UNLISTED
+		wait = no
+		server = /home/santa_game/start.sh
+		socket_type = stream
+		protocol = tcp
+		user = santa_game
+		port = 31337
+		flags = REUSE
+}

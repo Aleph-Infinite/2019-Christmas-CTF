@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UPLOAD</title>
+</head>
+<body>
+    <h1>UPLOAD</h1>
+    <form method="post" action="/upload">
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="pw" value="">
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="content" placeholder="content">
+        <input type="submit" name="submit" value="submit">
+    </form>
+
+    <script>
+        document.getElementsByName('id')[0].value = window.localStorage.getItem('id')
+        document.getElementsByName('pw')[0].value = window.localStorage.getItem('pw')
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>INDEX</title>
+</head>
+<body>
+    <h1>INDEX PAGE</h1>
+    <div class="nonlogin">
+        <a href="/login">login</a>
+        <a href="/register">register</a>
+    </div>
+    <div class="login" style="visibility: hidden;">
+        <p class="id"></p>
+        <button onclick="logout()">LOGOUT</button>
+        <form method="post" action="/board">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="pw" value="">
+            <input type="submit" value="board">
+        </form>
+
+        <form method="post" action="/upload">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="pw" value="">
+            <input type="submit" value="upload">
+        </form>
+
+        <form method="post" action="/admin">
+            <input type="hidden" name="id" value="">
+            <input type="hidden" name="pw" value="">
+            <input type="submit" value="admin">
+        </form>
+    </div>
+
+    <script>
+        const page = () => {
+            if(window.localStorage.getItem('id')){
+                document.getElementsByClassName('nonlogin')[0].style.visibility="hidden"
+                document.getElementsByClassName('login')[0].style.visibility=""
+                document.getElementsByClassName('id')[0].innerHTML='Welcome ' + window.localStorage.getItem('id')
+                document.getElementsByName('id')[0].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[0].value=window.localStorage.getItem('pw')
+                document.getElementsByName('id')[1].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[1].value=window.localStorage.getItem('pw')
+                document.getElementsByName('id')[2].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[2].value=window.localStorage.getItem('pw')
+            }else{
+                document.getElementsByClassName('nonlogin')[0].style.visibility=""
+                document.getElementsByClassName('login')[0].style.visibility="hidden"
+                document.getElementsByClassName('id')[0].innerHTML=''
+                document.getElementsByName('id')[0].value=''
+                document.getElementsByName('pw')[0].value=''
+                document.getElementsByName('id')[1].value=''
+                document.getElementsByName('pw')[1].value=''
+                document.getElementsByName('id')[2].value=''
+                document.getElementsByName('pw')[2].value=''
+            }
+        }
+
+        const logout = () => {
+            window.localStorage.removeItem('id')
+            window.localStorage.removeItem('pw')
+            page()
+        }
+
+        window.onload = page
+    </script>
+    
+</body>
+</html>

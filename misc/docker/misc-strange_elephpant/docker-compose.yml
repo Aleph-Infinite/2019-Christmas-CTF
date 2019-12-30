@@ -1,0 +1,8 @@
+version: '2'
+services:
+  strange_elephpant:
+    build: ./web/
+    ports:
+      - "12372:80"
+  
+

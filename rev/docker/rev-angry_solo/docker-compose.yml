@@ -1,0 +1,9 @@
+version: '2.4'
+
+services:
+    angry_solo:
+        build: ./
+        ports:
+            - "20000:20000"
+        cpus: ".85"
+        mem_limit: "16g"
