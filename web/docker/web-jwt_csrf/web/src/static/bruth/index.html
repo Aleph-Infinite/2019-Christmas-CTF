@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>'ㅅ'</title>
+</head>
+
+<body>
+  <div class="header">
+    <span id="text_isLogin">먼저 <a href="/bruth/login.html">로그인</a>을 해주세요</span>
+    <button class="hidden" onclick="window.location='/bruth/flag'">플래그 받기</button>
+  </div>
+</body>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  (async () => {
+    const data = await axios.get('/bruth/me');
+    if (data.data.code !== 200) return;
+    document.getElementById('text_isLogin').innerHTML = `${data.data.username}님 환영합니다<br><a href="/bruth/logout">로그아웃</a>`;
+    document.getElementsByClassName('hidden')[0].classList.remove('hidden');
+  })();
+</script>
+
+</html>

@@ -1,0 +1,12 @@
+service howdays
+{
+	    disable = no
+		type = UNLISTED
+		wait = no
+		server = /home/howdays/start.sh
+		socket_type = stream
+		protocol = tcp
+		user = howdays
+		port = 3000
+		flags = REUSE
+}

@@ -1,0 +1,7 @@
+version: '2'
+services:
+  prob:
+    build: ./web/
+    ports:
+      - "9999:8050"
+

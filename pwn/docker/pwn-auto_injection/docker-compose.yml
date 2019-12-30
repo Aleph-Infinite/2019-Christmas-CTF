@@ -1,0 +1,7 @@
+version: '2.4'
+
+services:
+    auto_injection:
+        build: ./
+        ports:
+            - "5252:5252"

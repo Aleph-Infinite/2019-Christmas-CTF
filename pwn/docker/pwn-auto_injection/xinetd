@@ -1,0 +1,13 @@
+service auto_injection
+{
+    disable     = no
+    type        = UNLISTED
+    wait        = no
+    server      = /usr/bin/python2.7
+    server_args = /home/prob/auto_injection.py
+    socket_type = stream
+    protocol    = tcp
+    user        = prob
+    port        = 5252
+    flags       = REUSE
+}

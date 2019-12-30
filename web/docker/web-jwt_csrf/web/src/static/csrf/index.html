@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>'ㅅ'</title>
+</head>
+
+<body>
+  <div class="header">
+    <span id="text_isLogin">먼저 <a href="/csrf/login.html">로그인</a>을 해주세요</span>
+    <button class="hidden" onclick="window.location='/csrf/post.html'">글쓰기</button>
+    <table id="table" class="hidden">
+      <tr>
+        <th>id</th>
+        <th>제목</th>
+      </tr>
+    </table>
+  </div>
+</body>
+
+<style>
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  (async () => {
+    const data1 = await axios.get('/csrf/me');
+
+    if (data1.data.code !== 200) return;
+    document.getElementById('text_isLogin').innerHTML = `${data1.data.username}님 환영합니다<br><a href="/csrf/logout">로그아웃</a>`;
+
+    const data2 = await axios.get('/csrf/board');
+    if (data2.data.code !== 200) return;
+
+    const table = document.getElementById('table');
+    document.getElementsByClassName('hidden')[0].classList.remove('hidden');
+    document.getElementsByClassName('hidden')[0].classList.remove('hidden');
+
+    for (const e of data2.data.data) {
+      const tr = document.createElement('tr');
+      const td1 = document.createElement('td');
+      const td2 = document.createElement('td');
+
+      td1.innerHTML = `<a href="/csrf/board/${e.id}">${e.id}</a>`;
+      td2.innerHTML = `<a href="/csrf/board/${e.id}">${e.title}</a >`;
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      table.appendChild(tr);
+    }
+  })();
+</script>
+
+</html>

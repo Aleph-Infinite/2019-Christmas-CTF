@@ -1,0 +1,20 @@
+version: '2'
+services:
+  mysql:
+    build: ./db/
+    command: mysqld --user=root --verbose
+    environment:
+      MYSQL_DATABASE: "xmasctf"
+      MYSQL_USER: "xmasctf"
+      MYSQL_PASSWORD: "xmasctf4444"
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+  jwt_csrf:
+    build: ./web/
+    ports:
+      - "9991:8011"
+    links:
+      - mysql
+  
+

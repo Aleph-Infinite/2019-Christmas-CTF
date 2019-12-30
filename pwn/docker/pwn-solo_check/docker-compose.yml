@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+    solo_test:
+        build: .
+        cap_add:
+            - SYS_PTRACE
+        security_opt:
+          - seccomp:unconfined
+          - apparmor:unconfined
+        privileged: true
+        ports:
+            - "1337:3000"

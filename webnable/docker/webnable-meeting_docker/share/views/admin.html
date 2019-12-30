@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ADMIN</title>
+</head>
+<body>
+    <h1>ADMIN PAGE</h1>
+    
+    <form method="post" action="/dumpDB" class="db">
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="pw" value="">
+        <input type="submit" value="DB Version">
+    </form>
+
+    <div class="btn">
+        <button onclick="changePage()">changePage</button><br>
+        <button onclick="readPage()">readPage</button><br>
+        <button onclick="uploadPage()">uploadPage</button>
+    </div>
+
+    <form method="post" action="/changePage" style="visibility: hidden;" class="change">
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="pw" value="">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="content" placeholder="content">
+        <input type="text" name="length" placeholder="length">
+        <input type="submit" value="change page">
+    </form>
+
+    <form method="post" action="/readPage" style="visibility: hidden;" class="read">
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="pw" value="">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="length" placeholder="length">
+        <input type="submit" value="read page">
+    </form>
+
+    <form method="post" action="/filePage" style="visibility: hidden;" class="upload">
+        <input type="hidden" name="id" value="">
+        <input type="hidden" name="pw" value="">
+        <input type="text" name="url" placeholder="url">
+        <input type="submit" value="upload page">
+    </form>
+
+
+
+    <script>
+        const page = () => {
+            if(window.localStorage.getItem('id')){
+                document.getElementsByName('id')[0].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[0].value=window.localStorage.getItem('pw')
+
+                document.getElementsByName('id')[1].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[1].value=window.localStorage.getItem('pw')
+
+                document.getElementsByName('id')[2].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[2].value=window.localStorage.getItem('pw')
+
+                document.getElementsByName('id')[3].value=window.localStorage.getItem('id')
+                document.getElementsByName('pw')[3].value=window.localStorage.getItem('pw')
+            }else{
+                document.getElementsByName('id')[0].value=''
+                document.getElementsByName('pw')[0].value=''
+
+                document.getElementsByName('id')[1].value=''
+                document.getElementsByName('pw')[1].value=''
+
+                document.getElementsByName('id')[2].value=''
+                document.getElementsByName('pw')[2].value=''
+
+                document.getElementsByName('id')[3].value=''
+                document.getElementsByName('pw')[3].value=''
+            }
+        }
+
+        const changePage = () => {
+            document.getElementsByClassName('btn')[0].style.visibility="hidden"
+            document.getElementsByClassName('db')[0].style.visibility="hidden"
+            document.getElementsByClassName('read')[0].style.visibility="hidden"
+            document.getElementsByClassName('upload')[0].style.visibility="hidden"
+            document.getElementsByClassName('change')[0].style.visibility=""
+        }
+
+        const readPage = () => {
+            document.getElementsByClassName('btn')[0].style.visibility="hidden"
+            document.getElementsByClassName('db')[0].style.visibility="hidden"
+            document.getElementsByClassName('read')[0].style.visibility=""
+            document.getElementsByClassName('upload')[0].style.visibility="hidden"
+            document.getElementsByClassName('change')[0].style.visibility="hidden"
+        }
+
+        const uploadPage = () => {
+            document.getElementsByClassName('btn')[0].style.visibility="hidden"
+            document.getElementsByClassName('db')[0].style.visibility="hidden"
+            document.getElementsByClassName('read')[0].style.visibility="hidden"
+            document.getElementsByClassName('upload')[0].style.visibility=""
+            document.getElementsByClassName('change')[0].style.visibility="hidden"
+        }
+
+        window.onload = page
+    </script>
+
+</body>
+</html>

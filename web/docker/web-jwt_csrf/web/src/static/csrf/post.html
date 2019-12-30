@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>작성</title>
+</head>
+
+<body>
+  <input id="input_title" type="text" placeholder="제목">
+  <br>
+  <textarea id="input_content" cols="80" rows="20" placeholder="내용"></textarea>
+  <br>
+  <button onclick="join()">작성</button>
+</body>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  async function join() {
+    const title = document.getElementById('input_title').value;
+    const content = document.getElementById('input_content').value;
+
+    if (!title || !content) return alert('아이디 또는 비밀번호가 입력되지 않았습니다');
+
+    const data = await axios.post('/csrf/board', { title, content });
+
+    const { code } = data.data;
+    switch (code) {
+      case 200:
+        window.location = '/csrf/';
+        break;
+      case 400:
+        alert('입력되지 않은 값이 있습니다');
+        break;
+      case 401:
+        alert('로그인이 필요합니다');
+        window.location = '/csrf/login.html';
+        break;
+      case 500:
+        alert('서버 오류 발생');
+    }
+  }
+</script>
+
+</html>

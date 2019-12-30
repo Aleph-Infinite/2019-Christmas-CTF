@@ -1,0 +1,12 @@
+service solo_test
+{
+	    disable = no
+		type = UNLISTED
+		wait = no
+		server = /home/solo_test/start.sh
+		socket_type = stream
+		protocol = tcp
+		user = solo_test
+		port = 3000
+		flags = REUSE
+}
